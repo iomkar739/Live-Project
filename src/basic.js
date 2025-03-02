@@ -2,6 +2,8 @@ import LeftNav from "./navigation";
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
 
+// edited in git
+
 const BasicDetails =() =>{
    let basicdata=useSelector(state=>state.MyBasic);
    let [name,setName]=useState(basicdata.fullname);
