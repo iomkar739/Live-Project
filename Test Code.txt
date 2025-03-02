@@ -1,0 +1,11 @@
+Install 
+	npm install eslint eslint-plugin-react eslint-plugin-react-hooks --save-dev
+
+Add in package.json file 
+
+"scripts": {
+  "lint": "eslint src/*/.{js,jsx,ts,tsx}"
+}
+
+Run in cmd of project folder 
+	npm run lint
