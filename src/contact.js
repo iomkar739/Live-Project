@@ -41,7 +41,7 @@ const Contact = () => {
 
 
     return (
-        <div className="container p-5 shadow-lg">
+        <div className="container p-5 shadow-lg"  style={{backgroundColor: "rgb(19, 3, 86)"}}>
             <div className="row">
                 <div className="col-xl-3 p-4" id="nav">
                     <ul className="List-group">
@@ -63,7 +63,7 @@ const Contact = () => {
                         <hr />
                     </ul>
                 </div>
-                <div className="col-xl-9 text-center p-5">
+                <div className="col-xl-9 text-center p-5" >
                     <div className="card border-1 shadow-lg mb-4 mt-2">
                         <div className="card-header"> <h2>Enter Your Contact Details</h2> </div>
                         <div className="card-body bg-light">

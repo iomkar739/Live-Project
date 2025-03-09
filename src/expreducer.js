@@ -1,9 +1,16 @@
-const MyExperience = () => {
+
+
+const MyExperience = (state, action) => {
     let data = {
-        totalExp:"3",
-        expDetail:"Worked Hard"
+        totalExp: "",
+        expDetail: ""
     };
-    return data;
+    let expdata = Object.assign(data, state);
+
+    if (action.type === "exp") {
+        expdata = action.info;
+    }
+    return expdata;
 }
 
-export default MyExperience; 
+export default MyExperience;

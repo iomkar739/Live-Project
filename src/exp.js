@@ -17,8 +17,8 @@ const Experience = () => {
     let dispatch = useDispatch();
     const save=()=>{
         let datainfo = {
-            totalExp : "totalExp",
-            expDetail : "expDetail"
+            "totalExp" : totalExp,
+            "expDetail" : expDetail
         };
 
         let datapass = {type:"exp", info:datainfo};
@@ -32,7 +32,7 @@ const Experience = () => {
     
     return(
         
-        <div className="container p-5 shadow-lg">
+        <div className="container p-5 shadow-lg"  style={{backgroundColor: "rgb(19, 3, 86)"}}>
             <div className="row">
                 <div className="col-xl-3  p-4" id="nav">
                 <ul className="List-group">
@@ -69,14 +69,14 @@ const Experience = () => {
                                     <div className="row mb-4">
                                         <div className="col-xl-4 text-center p-1"><p><b>Experience Details:</b></p></div>
                                         <div className="col-xl-7 text-center"> 
-                                            <textarea placeholder="Explain briefly about your experience" className="form-control"/>
+                                            <textarea placeholder="Explain briefly about your experience" className="form-control" onChange={obj=>setExpDetail(obj.target.value)} value={expDetail}/>
                                         </div>
                                     </div>
                                     
                                 </div>
                             </div>
                         </div>  
-                        <div className="card-footer text-center"><button className="btn text-white" id="submit"> Submit Experience Details </button></div>   
+                        <div className="card-footer text-center"><button className="btn text-white" id="submit" onClick={save}> Submit Experience Details </button></div>   
                     </div>
                 </div>
             </div>

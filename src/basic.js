@@ -38,7 +38,7 @@ const Basic = () => {
 
 
     return(
-        <div className="container mt-3 shadow-lg p-5 " style={{backgroundColor: "rgb(223, 215, 255)", padding:"100"}}>
+        <div className="container shadow-lg p-5 " style={{backgroundColor: "rgb(19, 3, 86)"}}>
             <div className="row">
                 
                     <div className="col-xl-3 p-4 " id="nav">

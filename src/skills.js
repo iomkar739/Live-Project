@@ -1,10 +1,28 @@
+import { useDispatch, useSelector } from "react-redux";
 import LeftNav from "./navigation";
 import { Link } from "react-router-dom";
 import swal from "sweetalert";
+import { useState } from "react";
 
 const Skills = () => {
+
+    let skilldata = useSelector(state => state.MySkill);
+
+    let[skill, setSkill] = useState(skilldata.skills);
+    console.log(skilldata);
+
+    let dispatch = useDispatch();
+    const save = () => {
+        let skillinfo = {
+            "skills":skill
+        };
+        let mySkillData = { type:"skill", info:skillinfo};
+        dispatch(mySkillData);
+        swal("Save Success", "Your Basic details saved successfully","success");
+    }
+
     return(
-        <div className="container shadow-lg p-5">
+        <div className="container shadow-lg p-5"  style={{backgroundColor: "rgb(19, 3, 86)"}}>
             <div className="row">
                 <div className="col-xl-3 p-4" id="nav">
                 <ul className="List-group">
@@ -36,7 +54,7 @@ const Skills = () => {
                                     <div className="row mb-4 mt-4">
                                         <div className="col-xl-4 text-center p-1"><p><b>Key Skills:</b></p></div>
                                         <div className="col-xl-7 text-center"> 
-                                            <textarea className="form-control" placeholder="Enter your key skills..."/> 
+                                            <textarea className="form-control" placeholder="Enter your key skills..." onChange={obj => setSkill(obj.target.value)} value={skill}/> 
                                         </div>
                                     </div>
 
@@ -45,7 +63,7 @@ const Skills = () => {
                                 </div>
                             </div>
                         </div>  
-                        <div className="card-footer text-center"><button className="btn text-white" id="submit"> Submit Your Skillsets </button></div>   
+                        <div className="card-footer text-center"><button className="btn text-white" id="submit" onClick={save}> Submit Your Skillsets </button></div>   
                     </div>
                 </div>
             </div>

@@ -36,7 +36,7 @@ const Education = () => {
 
 
     return(
-        <div className="container shadow-lg bg-light p-5">
+        <div className="container shadow-lg p-5"  style={{backgroundColor: "rgb(19, 3, 86)"}}>
             <div className="row">
                 <div className="col-xl-3 p-4" id="nav">
                 <ul className="List-group">
