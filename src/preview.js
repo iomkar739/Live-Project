@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
+import swal from "sweetalert";
 
 const FinalPreview = () => {
     let basicdata = useSelector(state => state.MyBasic);
@@ -8,6 +9,85 @@ const FinalPreview = () => {
     let skilldata = useSelector(state => state.MySkill);
     let projdata = useSelector(state => state.MyProject)
     let expdata = useSelector(state => state.MyExperience)
+
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    const save1 = () => {
+        let mydata = {
+            "basic":basicdata,
+            "edu":edudata,
+            "contact":contactdata,
+            "skill":skilldata,
+            "exp":expdata,
+            "project":projdata
+        };
+        console.log(mydata);
+
+        let url = "http://localhost:1234/userapi";
+
+        let postdata = {
+            headers:{'content-type':'application/json'},
+            method:'post',
+            body:JSON.stringify(mydata)
+        };
+
+        fetch(url, postdata)
+        .then(res=>res.json())
+        .then(info=>{
+            swal("Details Submitted", "Details Submitted to server...","success");
+            
+            setTimeout(()=>{window.location.reload()},4000);
+             // it refresh the page after 4 sec.
+           //setTimeout(()=>{window.location.reload()}, 3000);
+        })
+
+    }
+
+
+
+
+
+
+
+
+    const save = () => {
+        let mydata = {
+            "basic":basicdata,
+            "edu":edudata,
+            "contact":contactdata,
+            "skill":skilldata,
+            "exp":expdata,
+            "project":projdata
+        };
+        console.log(mydata);
+
+        let url = "https://cybotrix.com/liveapi/api/save";
+
+        let postdata = {
+            headers:{'content-type':'application/json'},
+            method:'post',
+            body:JSON.stringify({"details":mydata})
+        };
+
+        fetch(url, postdata)
+        .then(res=>res.text())
+        .then(info=>{
+            swal("Profile Submitted", "Your Profile Submitted, We will contact you soon...","success");
+            
+            setTimeout(()=>{window.location.reload()},4000);
+             // it refresh the page after 4 sec.
+           //setTimeout(()=>{window.location.reload()}, 3000);
+        })
+
+    }
 
 
 
@@ -131,10 +211,10 @@ const FinalPreview = () => {
                     <div className="card border-0 shadow-lg">
                         <div className="card-header text-light" id="nav"> <h4>Skill Details </h4></div>
                         <div className="card-body ">
-                            <tr>
+                            <tbody><tr>
                                 <td>Skills: </td>
                                 <td>{skilldata.skills}</td>
-                            </tr>
+                            </tr></tbody>
                         </div>
                         <div className="card-footer text-white" id="submit">
                             <Link to="/Skills" className="text-light text-decoration-none"> <i className="fa fa-edit"></i> Edit </Link>
@@ -147,7 +227,7 @@ const FinalPreview = () => {
                     <div className="card border-0 shadow-lg">
                         <div className="card-header text-light" id="nav"><h4> Project Details</h4> </div>
                         <div className="card-body ">
-                            <tr>
+                            <tbody><tr>
                                 <td>Projects: </td>
                                 <td>{projdata.proj}</td>
                             </tr>
@@ -162,7 +242,7 @@ const FinalPreview = () => {
                             <tr>
                                 <td>Live URL: </td>
                                 <td>{projdata.liveURL}</td>
-                            </tr>
+                            </tr></tbody>
                         </div>
                         <div className="card-footer text-white" id="submit">
                             <Link to="/Project" className="text-light text-decoration-none"> <i className="fa fa-edit"></i> Edit </Link>
@@ -175,14 +255,14 @@ const FinalPreview = () => {
                     <div className="card border-0 shadow-lg">
                         <div className="card-header text-light" id="nav"> <h4>Experience Details</h4> </div>
                         <div className="card-body ">
-                            <tr>
+                        <tbody><tr>
                                 <td>Total Experience: </td>
                                 <td>{expdata.totalExp}</td>
                             </tr>
                             <tr>
                                 <td>Experience Details: </td>
                                 <td>{expdata.expDetail}</td>
-                            </tr>
+                            </tr></tbody>
                         </div>
                         <div className="card-footer text-white" id="submit">
                             <Link to="/Experience" className="text-light text-decoration-none"> <i className="fa fa-edit"></i> Edit </Link>
@@ -193,7 +273,7 @@ const FinalPreview = () => {
 
 
                 <div className="col-xl-12 text-center mb-4">
-                    <button className="btn btn-danger"> Submit My Details </button>
+                    <button className="btn btn-danger" onClick={save}> Submit My Details </button>
                 </div>
             </div>
         </div>
