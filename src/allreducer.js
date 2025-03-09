@@ -3,11 +3,12 @@ import { combineReducers } from "redux";
 import MyBasic from "./basicreducer";
 import MyContact from "./contactreducer";
 import MyEducation from "./edureducer";
-import MySkills from "./skillsreducer";
+import MySkill from "./skillsreducer";
 import MyProject from "./projectreducer";
-import MyExpirence from "./expreducer";
+import MyExperience from "./expreducer";
 
-const MainReducer =combineReducers({
-  MyBasic,MyContact,MyEducation,MySkills,MyProject,MyExpirence
+const Mainreducer = combineReducers({
+    MyBasic, MyContact, MyEducation, MySkill, MyProject, MyExperience
 })
-export default MainReducer;
+
+export default Mainreducer

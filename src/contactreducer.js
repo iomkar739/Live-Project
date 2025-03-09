@@ -1,15 +1,22 @@
-const MyContact = (state,action) =>{
-  let data = {
-     "mobile":"",
-     "mail":"",
-     "localaddress":"",
-     "permanentaddress":"",
-     "reference":""
-  };
-  let ContactData=Object.assign(data,state);
-  if(action.type==="contact"){
-    ContactData=action.info;
-  }
-  return ContactData;
+
+
+const MyContact = ( state, action ) => {
+    let data = {
+        "mobile":"",
+        "email":"",
+        "localAdd":"",
+        "permanentAdd":"",
+        "referenceAdd":""
+    };
+
+    let contactdata = Object.assign(data, state);
+
+    if (action.type === "contact"){
+        contactdata = action.info;
+    }
+
+
+    return contactdata;
 }
+
 export default MyContact;

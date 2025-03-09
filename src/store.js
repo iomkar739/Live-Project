@@ -1,7 +1,9 @@
-import { legacy_createStore as createStore } from "redux";
-
+import { legacy_createStore as createstore } from "redux";
 import MainReducer from "./allreducer";
 
-const Mystore =createStore(MainReducer);
+const Mystore = createstore (MainReducer);
 
 export default Mystore;
+
+
+// 

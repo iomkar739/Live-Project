@@ -36,3 +36,22 @@
     transform: rotate(360deg);
   }
 }
+
+
+
+li:hover{
+  background-color: rgb(74, 93, 142);
+}
+
+#nav{
+  background-color: rgb(76, 40, 130);
+}
+
+#submit{
+  background-color: rgb(76, 40, 130)
+}
+
+#submit:hover{
+  background-color: black;
+}
+

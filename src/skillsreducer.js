@@ -1,11 +1,6 @@
-const MySkills = (state,action) =>{
-  let data = {
-    "skill":""
-  };
-  let SkillData=Object.assign(data,state)
-  if(action.type==="skill"){
-    SkillData=action.info
-  }
-  return SkillData;
+const MySkill = () => {
+    let data = [];
+    return data;
 }
-export default MySkills;
+
+export default MySkill;

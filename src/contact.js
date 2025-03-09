@@ -1,82 +1,130 @@
 import LeftNav from "./navigation";
+import { Link } from "react-router-dom";
+
 import { useDispatch, useSelector } from "react-redux";
 import { useState } from "react";
-const ContactDetails = ()=>{
-    let contactdata=useSelector(state=>state.MyContact);
-    let [mobile,setmobile]=useState(contactdata.mobile);
-    let[mail,setmail]=useState(contactdata.mail);
-    let[local,setLocal]=useState(contactdata.localaddress);
-    let[permanent,setPermanent]=useState(contactdata.permanentaddress);
-    let[ref,setRef]=useState(contactdata.reference);
+import swal from "sweetalert";
 
-    let dispatch=useDispatch();
-    const save = ()=>{
-        let userinfo={
-            "mobile":mobile,
-            "mail":mail,
-            "localaddress":local,
-            "permanentaddress":permanent,
-            "reference":ref
+
+
+const Contact = () => {
+
+    let contactdata = useSelector(state => state.MyContact);
+
+    let [mobile, setMobile] = useState(contactdata.mobile);
+    let [email, setEmail] = useState(contactdata.email);
+    let [localAdd, setLocalAdd] = useState(contactdata.localAdd);
+    let [permanentAdd, setPermanentAdd] = useState(contactdata.permanentAdd);
+    let [referenceAdd, setReferenceAdd] = useState(contactdata.referenceAdd);
+
+    console.log(contactdata);
+
+
+
+    
+    
+    let dispatch = useDispatch();
+    const save = () => {
+        let userinfo = {
+            "mobile": mobile,
+            "email": email,
+            "localAdd": localAdd,
+            "permanentAdd": permanentAdd,
+            "referenceAdd": referenceAdd
         };
-        let mydata={type:"contact",info:userinfo}
-         dispatch(mydata);
-         alert("Your Contact details saved successfully...");
+        let mydata = { type: "contact", info: userinfo };
+        dispatch(mydata);
+        swal("Save Success","Your contact details saved successfully","success");
+
     }
-  return(
-    <div className="container mt-4">
-    <div className="row">
-        <div className="col-xl-3 mb-4"><LeftNav/></div>
-        <div className="col-xl-6 mb-4 ">
-                <div className="card border-0 shadow-lg">
-                    <div className="card-header bg-info text-white"> <i class="fa fa-headset" aria-hidden="true"></i> Contact Imformation </div>
-                    <div className="card-body "> 
-                        
-                            
-                            <div className="form-group row">
 
-                                <div className="mb-4">
-                                <label className="mb-2"> Mobile Number </label>
-                                    <input type="number" placeholder="Mobile No" className="form-control" onChange={obj=>setmobile(obj.target.value)} value={mobile}/>
+
+
+    return (
+        <div className="container p-5 shadow-lg">
+            <div className="row">
+                <div className="col-xl-3 p-4" id="nav">
+                    <ul className="List-group">
+                        <li className="list-group-item bg-dark text-light p-2"><h3>Quick Links</h3></li>
+                        <hr />
+                        <li className="list-group-item p-1"><Link to="/" className="text-decoration-none  text-light"><i className="fa fa-home"> </i> Dashboard </Link></li>
+                        <hr />
+                        <li className="list-group-item p-1"><Link to="/basic" className="text-decoration-none  text-light"><i className="fa fa-user"> </i> My Basic </Link></li>
+                        <hr />
+                        <li className="list-group-item p-1" style={{backgroundColor: "rgb(74, 93, 142)"}}><Link to="/Contact" className="text-decoration-none text-light"  ><i className="fa fa-headset"> </i> My Contact </Link></li>
+                        <hr />
+                        <li className="list-group-item p-1"><Link to="/Education" className="text-decoration-none  text-light"><i className="fa fa-book"> </i> My Education </Link></li>
+                        <hr />
+                        <li className="list-group-item p-1"><Link to="/Skills" className="text-decoration-none  text-light"><i className="fa fa-desktop"> </i> My Skills </Link></li>
+                        <hr />
+                        <li className="list-group-item p-1"><Link to="/Project" className="text-decoration-none  text-light"><i className="fa fa-suitcase"> </i> My Project </Link></li>
+                        <hr />
+                        <li className="list-group-item p-1"><Link to="/Experience" className="text-decoration-none  text-light"><i className="fa fa-file"> </i> Experience </Link></li>
+                        <hr />
+                    </ul>
+                </div>
+                <div className="col-xl-9 text-center p-5">
+                    <div className="card border-1 shadow-lg mb-4 mt-2">
+                        <div className="card-header"> <h2>Enter Your Contact Details</h2> </div>
+                        <div className="card-body bg-light">
+                            <div className="row">
+                                <div className="col-xl-6">
+
+                                    <div className="row mb-2 mt-4">
+                                        <div className="col-xl-4 text-center p-1"><p><b>Mobile No.:</b></p></div>
+                                        <div className="col-xl-8 text-center"> <input type="number" placeholder="mobile no." className="form-control"
+                                            onChange={obj => setMobile(obj.target.value)} value={mobile} /> </div>
+                                    </div>
+
+                                    <div className="row mb-2">
+                                        <div className="col-xl-4 text-center p-1"><p><b>Local Address:</b></p></div>
+                                        <div className="col-xl-8 text-center">
+                                            <textarea placeholder="Enter Local Address" className="form-control"
+                                                onChange={obj => setLocalAdd(obj.target.value)} value={localAdd} />
+                                        </div>
+                                    </div>
+
+                                    <div className="row mb-4">
+                                        <div className="col-xl-4 text-center p-1"><p><b>Reference Address:</b></p></div>
+                                        <div className="col-xl-8 text-center">
+                                            <textarea placeholder="Reference Address" className="form-control"
+                                                onChange={obj => setReferenceAdd(obj.target.value)} value={referenceAdd} />
+                                        </div>
+                                    </div>
                                 </div>
 
-                                <div className="mb-4">
-                                <label className="mb-2"> Email Id</label>
-                                    <input type="email" placeholder="Example@gmail.com" className="form-control" onChange={obj=>setmail(obj.target.value)} value={mail}/>
+
+
+                                <div className="col-xl-6">
+
+                                    <div className="row mb-2 mt-4">
+                                        <div className="col-xl-4 text-center p-1"><p><b>Email:</b></p></div>
+                                        <div className="col-xl-8 text-center"><input type="email" className="form-control" placeholder="Email-id"
+                                            onChange={obj => setEmail(obj.target.value)} value={email} /> </div>
+                                    </div>
+
+                                    <div className="row mb-2">
+                                        <div className="col-xl-4 text-center p-1"><p><b>Permanent Address:</b></p></div>
+                                        <div className="col-xl-8 text-center">
+                                            <textarea placeholder="Permanent Address" className="form-control"
+                                                onChange={obj => setPermanentAdd(obj.target.value)} value={permanentAdd} />
+                                        </div>
+                                    </div>
+
+
                                 </div>
-
-                                <div className="mb-4">
-                                <label className="mb-2" > Local Address</label>
-                                <textarea placeholder="Local Address" className="form-control" rows="3" cols="3" onChange={obj=>setLocal(obj.target.value)} value={local}></textarea>
-                                </div>
-
-                                <div className="mb-4 ">
-                                <label className="mb-2"> Permanent Address</label>
-                                <textarea placeholder="Permanent Address" onChange={obj=>setPermanent(obj.target.value)} value={permanent} className="form-control" rows="3" cols="3"  ></textarea>
-
-                                </div>
-
-                                <div className="mb-4 ">
-                                <label className="mb-2"> Any Refrence Address and Contact</label>
-                                <textarea placeholder="Other Contact" className="form-control" rows="3" cols="3" onChange={obj=>setRef(obj.target.value)} value={ref} ></textarea>
-
-                                </div>
-
-                                <div class="text-center pb-2">
-                                  <button class="btn btn-danger me-3"onClick={save}> Save & Contiue </button>
-                                </div>
-
-
 
                             </div>
 
-                        
+
+
+                        </div>
+                        <div className="card-footer text-center"><button className="btn text-white" id="submit" onClick={save}> Submit Contact Details </button></div>
                     </div>
-                    
                 </div>
             </div>
-        <div className="col-xl-3 mb-4"></div>
-    </div>
-</div>
-  )
+        </div>
+    )
 }
-export default ContactDetails;
+
+export default Contact;

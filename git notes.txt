@@ -1,0 +1,26 @@
+-----------------------------------------------------------------------------------------------
+download and install 
+	https://git-scm.com/downloads
+	create account in github portal
+-----------------------------------------------------------------------------------------------
+Create New Repository and push files 
+	git init
+	git add .
+	git commit -m "first commit"
+	git branch -M main
+	git remote add origin https://github.com/cybotrix/bootstrap.git (ur repo url)
+	git push -u origin main
+	
+	git status
+
+
+Push The New Changes in github 
+git add . 							(stage all changes)
+git commit -m "your message" 		(commit the changes)
+git push origin main 		        (push to GitHub or another remote)
+
+
+Take /Fetch Recent Code From Github
+
+git fetch origin             - Updates remote tracking branches without modifying your working directory.
+git pull origin main         - Fetches and merges changes into your current branch.
