@@ -12,12 +12,7 @@ const FinalPreview = () => {
 
 
     
-    
-    
-    
-    
-    
-    
+
     
     
     const save1 = () => {
